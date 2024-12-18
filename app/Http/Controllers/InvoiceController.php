@@ -74,7 +74,7 @@ class InvoiceController extends Controller
 
         $invoiceName = 'INV_' . $fullInvoiceNumber . '_' . $dateName . '.pdf';
 
-        Pdf::view('invoice-pdf', [
+        return Pdf::view('invoice-pdf', [
                     'invoiceData' => $itemData,
                     'base64Logo' => $base64Logo,
                     'base64Signature' => $base64Signature,
@@ -85,13 +85,6 @@ class InvoiceController extends Controller
                     'date' => $date
                 ])
                 ->format('a4')
-                ->save('storage/pdf/' . $invoiceName);
-
-        $response = [
-            'downloadPath' => asset('storage/pdf/' . $invoiceName),
-            'downloadName' => $invoiceName,
-        ];
-
-        return response()->json($response);
+                ->name($invoiceName);
     }
 }
