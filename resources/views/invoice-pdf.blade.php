@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $invoiceNumber }}</title>
-    @vite('resources/css/app.css')
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 </head>
 <body class="font-sans p-4">
     <div class="container mx-auto">
@@ -18,6 +20,7 @@
                     <p>Jl. Kenanga No.33, Dadaprejo, Kec. Junrejo, Kota Batu, Jawa Timur 65233</p>
                     <p>085210355172</p>
                     <p>wawanservice.id@gmail.com</p>
+                    <p>NPWP: 12.938.870.8-628.000</p>
                 </div>
             </div>
         </div>
@@ -67,6 +70,10 @@
             </tbody>
         </table>
 
+        @php
+            $totalKeseluruhan = $totalJumlah;
+        @endphp
+
         <div class="flex mt-4 w-full gap-5 text-sm">
             <div class="border-t border-b border-red-400 w-full">
                 <div class="px-2">
@@ -80,7 +87,7 @@
                 </div>
                 <div class="flex justify-between px-2 bg-red-500 text-white">
                     <p class="text-left">Total keseluruhan:</p>
-                    <p class="text-right">IDR {{ number_format($totalJumlah, 2) }}</p>
+                    <p class="text-right">IDR {{ number_format($totalKeseluruhan, 2) }}</p>
                 </div>
             </div>
         </div>
@@ -97,7 +104,8 @@
             <div class="w-full mt-10 flex border px-2 py-2 bg-blue-500 text-white">
                 <div class="w-1/2">
                     <h2 class="font-bold">Detail perbankan</h2>
-                    <p>REK BCA: 0191116312 a/n: Wawan Sofyan</p>
+                    <p>REK BCA: 0191116312 a/n: WAWAN SOFYAN</p>
+                    <p>REK BCA: 3151336114 a/n: MOH. RAFLY</p>
                 </div>
                 <div class="w-1/2">
                     <h2 class="font-bold">Rincian lainnya</h2>

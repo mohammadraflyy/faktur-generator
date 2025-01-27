@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice Form</title>
-    @vite('resources/css/app.css')
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
 </head>
 <body class="font-sans p-4">
     <div class="container mx-auto">
-        <form action="{{ route('generate.invoice') }}" method="POST" class="w-full">
+        <form action="{{ route('generate.invoice') }}" method="POST" class="w-full" target="_blank">
             @csrf
 
             <div>
