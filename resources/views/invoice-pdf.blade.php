@@ -28,7 +28,7 @@
         <hr class="my-4 border-t-4 border-black">
 
         <div class="text-center mb-6">
-            <h2 class="text-2xl font-bold">FAKTUR</h2>
+            <h2 class="text-2xl font-bold">INVOICE</h2>
         </div>
 
         <div class="flex justify-between mb-6">
@@ -100,7 +100,7 @@
                     <p>Wawan Sofyan</p>
                 </div>
             </div>
-
+2
             <div class="w-full mt-10 flex border px-2 py-2 bg-blue-500 text-white">
                 <div class="w-1/2">
                     <h2 class="font-bold">Detail perbankan</h2>
@@ -112,6 +112,7 @@
                     <p>Dana: -</p>
                     <p>Gopay: -</p>
                     <p>OVO: -</p>
+                    <p>ShopeePay: 122085210355172</p>
                 </div>
             </div>
         </div>

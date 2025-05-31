@@ -72,7 +72,9 @@ class InvoiceController extends Controller
         $date = \Carbon\Carbon::parse($invoice->created_at)->format('Y-m-d');
         $dateName = \Carbon\Carbon::parse($invoice->created_at)->format('Ymd');
 
-        $invoiceName = 'INV_' . $fullInvoiceNumber . '_' . $dateName . '.pdf';
+        // Create a sanitized version of the receiver's name for the filename
+        $receiverName = str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9\s]/', '', $invoiceData['receiver']));
+        $invoiceName = 'INV_' . $fullInvoiceNumber . '_' . $receiverName . '_' . $dateName . '.pdf';
 
         return Pdf::view('invoice-pdf', [
                     'invoiceData' => $itemData,
