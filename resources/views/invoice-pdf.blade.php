@@ -100,18 +100,13 @@
                     <p>Wawan Sofyan</p>
                 </div>
             </div>
-2
             <div class="w-full mt-10 flex border px-2 py-2 bg-blue-500 text-white">
                 <div class="w-1/2">
                     <h2 class="font-bold">Detail perbankan</h2>
                     <p>REK BCA: 0191116312 a/n: WAWAN SOFYAN</p>
-                    <p>REK BCA: 3151336114 a/n: MOH. RAFLY</p>
                 </div>
                 <div class="w-1/2">
                     <h2 class="font-bold">Rincian lainnya</h2>
-                    <p>Dana: -</p>
-                    <p>Gopay: -</p>
-                    <p>OVO: -</p>
                     <p>ShopeePay: 122085210355172</p>
                 </div>
             </div>

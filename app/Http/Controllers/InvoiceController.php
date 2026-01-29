@@ -19,8 +19,9 @@ class InvoiceController extends Controller
     public function generateInvoicePdf(Request $request)
     {
         $request->validate([
+            'invoice_items.invoice_date' => 'required|date',
             'invoice_items.receiver' => 'required|string',
-            'invocie_items.note' => 'nullable|string',
+            'invoice_items.note' => 'nullable|string',
             'invoice_items.items' => 'required|array|min:1',
             'invoice_items.items.*.product_name' => 'required|string',
             'invoice_items.items.*.qty' => 'required|numeric|min:1',
@@ -44,6 +45,7 @@ class InvoiceController extends Controller
             'invoice_number' => $fullInvoiceNumber,
             'receiver' => $invoiceData['receiver'],
             'note' => $invoiceData['note'] ?? '',
+            'invoice_date' => $invoiceData['invoice_date'],
         ]);
 
         $totalAmount = 0;
@@ -69,8 +71,8 @@ class InvoiceController extends Controller
         $logoPath = public_path('images/logo.png');
         $base64Logo = base64_encode(file_get_contents($logoPath));
 
-        $date = \Carbon\Carbon::parse($invoice->created_at)->format('Y-m-d');
-        $dateName = \Carbon\Carbon::parse($invoice->created_at)->format('Ymd');
+        $date = \Carbon\Carbon::parse($invoice->invoice_date)->format('Y-m-d');
+        $dateName = \Carbon\Carbon::parse($invoice->invoice_date)->format('Ymd');
 
         // Create a sanitized version of the receiver's name for the filename
         $receiverName = str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9\s]/', '', $invoiceData['receiver']));

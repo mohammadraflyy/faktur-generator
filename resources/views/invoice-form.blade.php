@@ -15,7 +15,13 @@
             @csrf
 
             <div>
-                <input class="border p-2 mb-2 w-full" type="text" name="invoice_items[receiver]" id="receiver" placeholder="Receiver">
+                <label for="invoice_date" class="block mb-1 font-semibold">Tanggal Invoice</label>
+                <input class="border p-2 mb-2 w-full" type="date" name="invoice_items[invoice_date]" id="invoice_date" value="{{ date('Y-m-d') }}" required>
+            </div>
+
+            <div>
+                <label for="receiver" class="block mb-1 font-semibold">Penerima</label>
+                <input class="border p-2 mb-2 w-full" type="text" name="invoice_items[receiver]" id="receiver" placeholder="Receiver" required>
             </div>
 
             <div class="mb-2">
